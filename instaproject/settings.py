@@ -14,10 +14,29 @@ import os
 from pathlib import Path
 from decouple import config,Csv
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG', True)
+
+#adding config
+cloudinary.config( 
+  cloud_name = config('CLOUD_NAME'), 
+  api_key =  config('CLOUD_KEY'), 
+  api_secret = config('CLOUD_SECRET')
+)
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('CLOUD_NAME'),
+    'API_KEY': config('CLOUD_KEY'),
+    'API_SECRET': config('CLOUD_SECRET')
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +58,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'instapp',
     'bootstrap4',
+    'cloudinary',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
