@@ -1,8 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Cookie&family=Lato:wght@700&family=Nosifer&family=Permanent+Marker&family=Poppins&family=Shojumaru&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Cookie&display=swap');
 h1{
     color: crimson;
 }
 .navi{
     font-family: 'Cookie', cursive;
+    font-size: 24px;
+}
+.navi a{
+    text-decoration: none;
+    list-style: none;
 }
