@@ -7,3 +7,8 @@ urlpatterns = [
     url(r'^$',views.index,name= 'index'),
 
 ]
+
+# urlpatterns = [
+#     path('',views.index,name= 'index'),
+
+# ]

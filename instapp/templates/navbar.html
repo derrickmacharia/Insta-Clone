@@ -13,28 +13,54 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse " id="navbarNavAltMarkup navi">
-          <div class="navbar-nav text-white">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a style ="color:black;" href="/admin" class="nav-item text-white " active-color="black"><i class="fas fa-user-tie text-white"></i>&nbsp; &nbsp;Admin</a>
-              </li>
-            </ul>
-          </div>
-
+          <form class="navbar-form" role="search" action="">
+    
+            <div class="input-group">
+              <input type="text" class="form-control rounded-pill" placeholder="Search photos" name="photos">
+              <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search text-white" aria-hidden="true"></i></button>
+              </div>
+            </div>
+  
+          </form>
         </div>
         <div class="col-sm-4 col-md-4 navbar-right">
+        </div>
+        <div class="navbar-nav text-white">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a style ="color:black;" href="/admin" class="nav-item text-white " active-color="black"><i class="fa fa-unlock-alt" aria-hidden="true"></i>&nbsp; &nbsp;Admin</a>
+            </li>
+          </ul>
+        </div>
+        <!--The search form above-->
+    <div class="col-sm-6 col-md-6">
+      {% if user.is_authenticated %}
+      <ul>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
+                    <span class="caret"></span>
+                </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="{%url 'image'%}">Home</a>
+            </li>
+            <li>
+              <a href="/accounts/password/change">Change Password</a>
+            </li>
+            <li>
+              <a href="/logout">Logout</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      {% else %}
+      <li>
+        <a class='btn btn-default' href="/accounts/login">Login</a>
+      </li>
 
-            <form class="navbar-form" role="search" action="">
-    
-              <div class="input-group">
-                <input type="text" class="form-control rounded-pill" placeholder="Search photos" name="photos">
-                <div class="input-group-btn">
-                  <button class="btn btn-default" type="submit"><i class="fa fa-search text-white" aria-hidden="true"></i></button>
-                </div>
-              </div>
-    
-            </form>
-          </div>
+      {% endif %}
+    </div>
     </nav>
 </body>
 </html>
