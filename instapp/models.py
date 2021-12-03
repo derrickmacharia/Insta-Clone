@@ -14,4 +14,19 @@ class Images(models.Model):
     def __str__(self):
         return self.title
 
+    def save_images(self):
+        self.save()
+
+    def update_images(self, title, caption):
+        self.title = title
+        self.caption = caption
+        self.save()
+
+    # get all images
+    @classmethod
+    def get_all_images(cls):
+        today = dt.date.today()
+        images = Images.objects.all(post_date__date = today)
+        return images
+
     
