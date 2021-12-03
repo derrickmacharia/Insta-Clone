@@ -14,20 +14,25 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-# from django.urls import path,include
-from django.conf.urls import include,url
+from django.urls import path,include
+# from django.conf.urls import include,url
 from django.contrib.auth import views 
-
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     path('',include('instapp.urls')),
-#     path('logout/', views.LogoutView.as_view(), name='logout'), 
-#     path('accounts/', include('registration.backends.simple.urls')),
-# ]
+from django_registration.backends.one_step.views import RegistrationView
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'',include('instapp.urls')),
-    url(r'^accounts/', include('registration.backends.simple.urls')),
-    url(r'^logout/$', views.logout, {"next_page": '/'}), 
+    path('admin/', admin.site.urls),
+    path('',include('instapp.urls')),
+    path('accounts/register/', RegistrationView.as_view(success_url='/'),
+         name='django_registration_register'),
+    path('accounts/', include('django_registration.backends.one_step.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('logout/', views.LogoutView.as_view(), name='logout'),
+    path(r'^logout/$', views.LogoutView, {"next_page": '/'}), 
 ]
+
+# urlpatterns = [
+#     url(r'^admin/', admin.site.urls),
+#     url(r'',include('instapp.urls')),
+#     url(r'^accounts/', include('registration.backends.simple.urls')),
+#     url(r'^logout/$', views.logout, {"next_page": '/'}), 
+# ]
