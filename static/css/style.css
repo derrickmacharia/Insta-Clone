@@ -2,13 +2,26 @@
 h1{
     color: crimson;
 }
+nav{
+    height: 4rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    color: black;
+    width: 100%;
+}
+.navi1{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 .navi{
     font-family: 'Cookie', cursive;
     font-size: 24px;
+
 }
 .navi a{
     text-decoration: none;
     list-style: none;
+    font-weight: 600;
 }
 .responsive{
     height: auto;
@@ -18,24 +31,10 @@ h1{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 3rem;
+    margin-top: 1rem;
 }
-/* .links{
-   margin: 6px;
-}
-.navi1{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 34rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    margin-bottom: 1rem;
-    width: 100%;
-    font-size: 26px;
-    font-weight: 500;
-    margin-right: 2rem;
-} */
 .imgs{
     width: 50%;
     height: auto;
 }
+
