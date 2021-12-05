@@ -13,7 +13,7 @@ class Image(models.Model):
     title = models.CharField(max_length=50)
     caption = models.TextField()
     post_date = models.DateTimeField(auto_now_add=True,null=True)
-    profile = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    
 
     def __str__(self):
         return self.title
@@ -75,6 +75,12 @@ class Likes(models.Model):
     def _str_(self):
         return self.likes
 
+class Follow(models.Model):
+    user = models.OneToOneField(User, related_name='following',on_delete = models.CASCADE)
+    follower = models.ForeignKey(User, related_name='followers',on_delete = models.CASCADE)
+
+    def __str__(self):
+        return "%s follower" % self.follower
 
 
 class Comments(models.Model):

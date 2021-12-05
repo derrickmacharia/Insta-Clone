@@ -34,7 +34,12 @@ nav{
     margin-top: 1rem;
 }
 .imgs{
-    width: 50%;
+    width: 40%;
     height: auto;
 }
-
+.sign{
+    color: crimson;
+}
+.phones{
+    background: url(../images/phones);
+}
