@@ -21,6 +21,16 @@ class Image(models.Model):
     def save_images(self):
         self.save()
 
+        # delete image
+    def delete_image(self):
+        self.delete()
+
+    @classmethod
+    def get_images_by_user(cls, user):
+        images = cls.objects.filter(user=user)
+        return images
+
+
     def update_images(self, title, caption):
         self.title = title
         self.caption = caption
