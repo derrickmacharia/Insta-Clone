@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from instapp.models import Image,Profile
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+from django.shortcuts import render, redirect
 
 # Create your views here.
 
@@ -19,4 +23,3 @@ def profile(request):
     # get the profile of the current logged in user
     profile = Profile.objects.filter(user_id=current_user.id).first()
     return render(request, 'profile.html', {"image": image, "profile": profile})
-

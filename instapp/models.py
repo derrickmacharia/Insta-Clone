@@ -57,3 +57,21 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
+
+class Likes(models.Model):
+    image = models.ForeignKey(Image, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def _str_(self):
+        return self.likes
+
+
+
+class Comments(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ForeignKey(Image, on_delete=models.CASCADE)
+    comment = models.CharField(max_length=50)
+    comment_date = models.DateTimeField(auto_now_add=True)
+
+    def save_comment(self):
+        self.save()

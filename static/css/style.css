@@ -14,13 +14,13 @@ h1{
     height: auto;
     width: 100%;
 }
-.comtent{
+.content{
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 3rem;
 }
-.links{
+/* .links{
    margin: 6px;
 }
 .navi1{
@@ -34,4 +34,8 @@ h1{
     font-size: 26px;
     font-weight: 500;
     margin-right: 2rem;
+} */
+.imgs{
+    width: 50%;
+    height: auto;
 }
