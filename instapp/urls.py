@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,re_path
+from . import views as main_views
 from instapp import views
 
 
@@ -14,8 +15,8 @@ urlpatterns = [
     path('',views.index,name= 'index'),
     path('profile/', views.profile, name='profile'),
     path('like/', views.like_image, name='like-image'),
-    path('search/', views.search_post, name='search.user'),
-    # path('search/', views.search_user, name='search.post'),
+    path('search/', views.search_post, name='search.post'),
     path('image/<int:id>/', views.single_pic, name='single.pic'),
+    # re_path(r'^comment/(?P<image_id>\d+)$',main_views.post_detail,name='post_detail'),
 ]
 

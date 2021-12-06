@@ -1,13 +1,13 @@
 from django import forms
 from django.http.response import Http404
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required
 from instapp.models import Image,Profile,Likes
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 from django.shortcuts import render, redirect
-from .forms import PostImageForm
+from .forms import PostImageForm,CommentForm
 
 # Create your views here.
 
@@ -16,6 +16,7 @@ def index(request):
     image = Image.objects.all().order_by('-id')
 
     return render(request, 'all-photos/index.html',{'image': image})
+
 
 
 @login_required(login_url='/accounts/login/')
@@ -77,3 +78,24 @@ def single_pic(request,id):
     imagetitle = image.title
 
     return render(request, 'pic.html', {'image': image,'images': related_images, 'title': imagetitle})
+
+# def post_detail(request, slug):
+#     template_name = 'post_detail.html'
+#     post = get_object_or_404(Image, slug=slug)
+#     comments = post.comments.filter(active=True)
+#     new_comment = None
+#     # Comment posted
+#     if request.method == 'POST':
+#         comment_form = CommentForm(data=request.POST)
+#         if comment_form.is_valid():
+
+#             # Create Comment object but don't save to database yet
+#             new_comment = comment_form.save(commit=False)
+#             # Assign the current post to the comment
+#             new_comment.post = post
+#             # Save the comment to the database
+#             new_comment.save()
+#     else:
+#         comment_form = CommentForm()
+
+#     return render(request, template_name, {'post': post,'comments': comments,'new_comment': new_comment,'comment_form': comment_form})

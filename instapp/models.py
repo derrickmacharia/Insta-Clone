@@ -109,11 +109,25 @@ class Follow(models.Model):
         return "%s follower" % self.follower
 
 
-class Comments(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+# class Comments(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     image = models.ForeignKey(Image, on_delete=models.CASCADE)
+#     comment = models.CharField(max_length=50)
+#     comment_date = models.DateTimeField(auto_now_add=True)
+
+#     def save_comment(self):
+#         self.save()
+
+class Comment(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='comments')
     image = models.ForeignKey(Image, on_delete=models.CASCADE)
     comment = models.CharField(max_length=50)
-    comment_date = models.DateTimeField(auto_now_add=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=False)
+
 
     def save_comment(self):
         self.save()
+
+    def __str__(self):
+        return 'Comment {} by {}'.format(self.user, self.image)

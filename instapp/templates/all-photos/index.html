@@ -16,8 +16,8 @@
               <div class="col-lg-12 col-md-12 mb-4">
                 <div class="bg-white rounded shadow-sm">
                     <a href="/image/{{image.id}}">
-                      <img src="{{ pic.image.url }}" alt=""
-                      class="img-fluid card-img-top">
+                                        <img src="{{ pic.image.url }}" alt=""
+                    class="img-fluid card-img-top">
                     </a>
                   <div class="p-4">
                     <h5 class="headings text-center"> {{ pic.title }}</h5>
@@ -36,9 +36,11 @@
                         {% csrf_token %}
                         <input type="hidden" name="image_id" value="{{pic.id}}">
                         {%if user not in pic.liked.all %}
-<a class=""href="/"><img class="text-white" src="https://img.icons8.com/win10/2x/like.png" alt="" style="width: 28%;"></a>
+                        <button class="btn btn-success" type="submit">like</button>
+                        <a class=""href="/"><img class="" src="https://img.icons8.com/win10/2x/like.png" alt="" style="width: 28%;"></a>
                         {% else %}
-                         <button class="" type="submit">Un-like</button> 
+                         <button class="" type="submit">Un-like</button>
+                         <a class=""href="/"><img class="text-white" src="https://img.icons8.com/win10/2x/like.png" alt="" style="width: 28%;"></a> 
                         {% endif %}
                       </form>
                         <strong>{{pic.liked.all.count}}Like(s)</strong>

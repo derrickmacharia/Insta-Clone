@@ -41,17 +41,18 @@
         <div class="modal-dialog modal-dialog-centered mode" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="modalPictureTitle">title</h5>
+              <h5 class="modal-title" id="modalPictureTitle">Post Image</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form }}
-                <button type="submit">post pic</button>
-              </form>
+                {% load crispy_forms_tags %}
+                <form method="post" style="margin-top: 1.3em;">
+                          {{ form | crispy }}
+                          {% csrf_token %}
+                          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+                 </form>
             </div>
             <div class="modal-footer">
                 
@@ -60,22 +61,24 @@
         </div>
           
     </div>
-    {% for image in images %}
-                <div class="col-md-4">
-                    <a href="{% url 'single.pic' image.id %}">
-                        <div class="card mb-4">
-                            <img src="{{ image.image.url }}" class="card-img-tops" alt="Image">
-                        </div>
-                    </a>
-                </div>
-                {% empty %}
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="alert alert-info" role="alert">
-                        No images!
-                    </div>
-                </div>
-                {% endfor %}
-
 </section>
+
+    <h3>My posts</h3>
+    {% for image in image %}
+    <div class="col-md-4">
+        
+            <div class="card mb-4">
+                <img src="{{ image.image.url }}" class="img-responsive" alt="Image">
+            </div>
+    </div>
+    {% empty %}
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="alert alert-info" role="alert">
+            No images!
+        </div>
+    </div>
+    {% endfor %}
+
+
 {% endblock %}
