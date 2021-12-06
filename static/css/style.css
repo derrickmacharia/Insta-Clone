@@ -43,3 +43,10 @@ nav{
 .phones{
     background: url(../images/phones);
 }
+.phots{
+    border-radius: 20px;
+    padding: 5px 10px;
+    border: none;
+    background-color: crimson;
+    margin-top: 2rem;
+}

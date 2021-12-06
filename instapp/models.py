@@ -12,6 +12,7 @@ class Image(models.Model):
     image = CloudinaryField('image')
     title = models.CharField(max_length=50)
     caption = models.TextField()
+    liked= models.ManyToManyField(User,default=None,blank=True,related_name='liked')
     post_date = models.DateTimeField(auto_now_add=True,null=True)
     
 
@@ -30,7 +31,6 @@ class Image(models.Model):
         images = cls.objects.filter(user=user)
         return images
 
-
     def update_images(self, title, caption):
         self.title = title
         self.caption = caption
@@ -43,6 +43,26 @@ class Image(models.Model):
         images = Image.objects.all(post_date__date = today)
         return images
 
+    @classmethod
+  # search images using image name
+    def search_image_name(cls, search_term):
+        images = cls.objects.filter(
+        title__icontains=search_term)
+        return images    
+
+    def _str_(self):
+        return self.user.username       
+
+    def _str_(self):
+        return self.title
+    #  get a single image using id
+    @classmethod
+    def get_single_image(cls, id):
+        image = cls.objects.get(id=id)
+        return image
+
+    def _str_(self):
+        return self.title
     
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -64,17 +84,23 @@ class Profile(models.Model):
         profile = cls.objects.filter(user=user)
         return profile
 
+    
+
     def __str__(self):
         return self.user.username
 
 
+LIKE_CHOICES={
+    ('Like','Like'),
+    ('Unlike','Unlike',)
+}
 class Likes(models.Model):
     image = models.ForeignKey(Image, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    value = models.CharField(choices=LIKE_CHOICES,default='like',max_length=10)
 
     def _str_(self):
-        return self.likes
-
+        return self.value
 class Follow(models.Model):
     user = models.OneToOneField(User, related_name='following',on_delete = models.CASCADE)
     follower = models.ForeignKey(User, related_name='followers',on_delete = models.CASCADE)
