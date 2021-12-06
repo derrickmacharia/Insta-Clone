@@ -1,9 +1,9 @@
-<nav class="navi">
+<nav class="">
   <div class="container container-full">
     <div class="navi1">
-      <a class="nav-link active text-dark" aria-current="page" href="/">  &nbsp; Instagram</a>
+      <a class="nav-link active text-dark navi" aria-current="page" href="/">  &nbsp; Instagram</a>
       <div class="forms">
-        <form class=" form" role="search" action="{% url 'search.post' %}">
+        <form class=" form" role="search" action="{% url 'search.user' %}">
           <div class="input-group " >
             <input type="text" class="form-control" placeholder="Search photos" name="search" style="height: 30px; width: 200px;" >
             <div class="input-group-btn">
@@ -17,11 +17,10 @@
         <ul class="navbar links  " style="gap: 18px;">
           <a style ="color:black;" href="/admin" class="nav-item  " active-color="black"><i class="fa fa-unlock-alt" aria-hidden="true"></i></a>
           <a class=""href="/"><img class="text-white" src="https://img.icons8.com/m_outlined/2x/home--v2.png" alt="" style="width: 50%;"></a>
-            <a class=""href="/"><img class="text-white" src="https://img.icons8.com/ios7/2x/facebook-messenger.png" alt=""
-                style="width: 25%;"></a>
-            <a class=""href="/"><img class="text-white" src="https://img.icons8.com/m_outlined/2x/plus-2-math.png" alt="" style="width: 25%;"></a>
-            <a class=""href="/"><img class="text-white" src="https://img.icons8.com/ios11/2x/compass.png" alt="" style="width: 8%;"></a>
-            <a class=""href="/"><img class="text-white" src="https://img.icons8.com/win10/2x/like.png" alt="" style="width: 8%;"></a>
+            <a class=""href="/"><img class="text-white" src="https://img.icons8.com/ios7/2x/facebook-messenger.png" alt=""style="width: 25%;"></a>
+            <a class=""href="/"><img class="text-white" src="https://img.icons8.com/m_outlined/2x/plus-2-math.png" alt="" style="width: 50%;"></a>
+            <a class=""href="/"><img class="text-white" src="https://img.icons8.com/ios11/2x/compass.png" alt="" style="width: 28%;"></a>
+            <a class=""href="/"><img class="text-white" src="https://img.icons8.com/win10/2x/like.png" alt="" style="width: 28%;"></a>
           <a class="nav-item active text-dark" aria-current="page" href="/profile/">
             <img src="https://st2.depositphotos.com/1104517/11965/v/600/depositphotos_119659092-stock-illustration-male-avatar-profile-picture-vector.jpg"
             class="card-img-top" alt="My profile picture" style="height: 35px;">

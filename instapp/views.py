@@ -1,4 +1,5 @@
 from django import forms
+from django.http.response import Http404
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from instapp.models import Image,Profile,Likes
@@ -46,6 +47,7 @@ def search_post(request):
     else:
         message = 'Not found'
         return render(request, 'all-photos/search.html', {'danger': message})
+        
 
 def like_image(request):
     user = request.user
@@ -66,3 +68,12 @@ def like_image(request):
 
         like.save()       
     return redirect('index')
+
+def single_pic(request,id):
+
+    image = Image.objects.get(id = id)
+    related_images = Image.objects.filter(
+        user_id=image.user_id).order_by('-image_date')
+    imagetitle = image.title
+
+    return render(request, 'pic.html', {'image': image,'images': related_images, 'title': imagetitle})
