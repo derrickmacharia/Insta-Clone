@@ -81,3 +81,20 @@ class ImageTestCase(TestCase):
             
             user_id=user.id
         )
+
+class ProfileTestCase(TestCase):
+    def setUp(self):
+        user = User.objects.create(
+            username='test_user',
+            first_name='derrick',
+            last_name='Macharia'
+        )
+        Profile.objects.create(
+            bio='test bio',
+            profile_photo='https://unsplash.com/photos/Pp6efQ_ghiA',
+            user_id=user.id
+        )
+
+    def test_bio(self):
+        profile = Profile.objects.get(bio='test bio')
+        self.assertEqual(profile.bio, 'test bio')
