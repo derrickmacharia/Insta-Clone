@@ -64,3 +64,20 @@ class ImageTestCase(TestCase):
             username='newuser',
             
         )
+        photo = Image.objects.create(
+            caption='test post',
+            image='https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Kenya.svg',
+            
+            user_id=user.id
+        )
+    def test_image_liked(self):
+        user = User.objects.create(
+            username='newuser',
+            
+        )
+        photo = Image.objects.create(
+            caption='test post',
+            image='https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Kenya.svg',
+            
+            user_id=user.id
+        )
