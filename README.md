@@ -7,23 +7,22 @@
 [Derrick Macharia](https://github.com/derrickmacharia)
 
 # Description
-This is a Python Application where a user(s) can view  a photo, search through category and view according to the location taken.
+This is a Python Application where a user(s) can view  a photo, add a photo, search through like an image and leave a comment .
 
 ##  Live Link 
- (https://bazenga-art.herokuapp.com/)
+ ()
 
 ## Screenshots
-###### Home page
+###### Screenshot 1
 <img src="static/images/Screenshot (1).png">
 
-###### Image Details
+###### Screenshot 2
 <img src="static/images/Screenshot (2).png">
 
-###### Search by Category
+###### Screenshot 3
  <img src="static/images/Screenshot (3).png">
 
-###### Search by Location
-<img src="static/images/Screenshot (4).png">
+>
 
 
 
