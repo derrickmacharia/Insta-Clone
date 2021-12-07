@@ -1,0 +1,14 @@
+{%extends 'all-photos/base.html'%}
+
+ {% block content %}
+
+   {{prof_user.user.username}}
+
+
+    {% for image in images %}
+
+    <img src="{{ image.image.url }}" alt=""class="img-fluid card-img-top">
+
+    {% endfor%}
+
+ {% endblock %}

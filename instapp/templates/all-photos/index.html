@@ -15,10 +15,11 @@
                     <a href="">
                         <img src="{{image.user.profile.profile_photo.url}}" class="user-avatar border-radius me-2" height='30px' width="30px" alt="Profile Photo">
                     </a>
-                    <a href="">
-                        <h6>{{image.user.username}}</h6>
+                    <a href="{% url 'user.profile' pic.user.id %}">
+                        <h6>profile</h6>
                     </a>
                 </div>
+                <a href=""></a>
                 <h2>...</h2>
             </div>
                 <div class="bg-white rounded shadow-sm">
@@ -50,11 +51,6 @@
                       {% endif %}
                     </form>
                       <strong>{{pic.liked.all.count}}Like(s)</strong>
-                    
-
-
-                    
-
                   </div>
                   <form action="{% url 'comments' image_id=pic.id%}" class="comment-form com" method="post"
                   enctype="multipart/form-data">
@@ -72,7 +68,7 @@
                 <div class="modal-dialog modal-dialog-centered mode" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="modalPictureTitle">{{pic.title}}</h5>
+                      <h5 class="modal-title" id="modalPictureTitle">{{pic.name}}</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -96,7 +92,6 @@
         
                     </div>
                     <div class="modal-footer">
-                      <p class="text-center">Comments</p>
                       {% for comment in pic.saved_comments %}
                       
                       <div class="comments">
@@ -111,9 +106,15 @@
             </div>
              </div>
 
+
              {% endfor%}
           </div>
           </div>
+          {% for users in user %}
+          <img src="{{ users.profile_photo.url }}" alt=""class="img-fluid card-img-top">
+            {{users.user.username}}
+
+          {% endfor%}
       </div>
   </div>
   

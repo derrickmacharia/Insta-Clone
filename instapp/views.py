@@ -15,6 +15,8 @@ from .forms import PostImageForm,CommentForm
 @login_required(login_url='/accounts/login/')
 def index(request):
     image = Image.objects.all().order_by('-id')
+    user = Profile.objects.all()
+    form = PostImageForm()
     if request.method == 'POST':  
         form = CommentForm(request.POST, request.FILES)
         if form.is_valid():
@@ -25,8 +27,11 @@ def index(request):
     
     else:
         form = CommentForm()
+        forms = PostImageForm()
 
-    return render(request, 'all-photos/index.html',{'image': image, 'form': form})
+    return render(request, 'all-photos/index.html',{'image': image, 'form': form, 'forms': forms, 'user': user })
+
+
 
 
 
@@ -36,9 +41,9 @@ def profile(request):
     image = Image.objects.filter(user_id=current_user.id)
     profile = Profile.objects.filter(user_id=current_user.id).first()
 
-    form = PostImageForm()
+    forms = PostImageForm()
 
-    context = {"image": image, "profile": profile, "form": form}
+    context = {"image": image, "profile": profile, "forms": forms}
     if request.method == 'POST':
         form = PostImageForm (request.POST , request.FILES)
         if form.is_valid():
@@ -60,19 +65,26 @@ def search_post(request):
         message = 'Not found'
         return render(request, 'all-photos/search.html', {'danger': message})
 
+# @login_required(login_url='/accounts/login/')
+# def user_profile(request, id):
+#     # check if user exists
+#     if User.objects.filter(id=id).exists():
+#         # get the user
+#         user = User.objects.get(id=id)
+#         # get all the images for the user
+#         image = Image.objects.filter(user_id=id)
+#         # get the profile of the user
+#         profile = Profile.objects.filter(user_id=id).first()
+#         return render(request, 'user-profile.html', {'post': image, 'profile': profile, 'user': user})
+#     else:
+#         return redirect('/') 
+
 @login_required(login_url='/accounts/login/')
-def user_profile(request, id):
-    # check if user exists
-    if User.objects.filter(id=id).exists():
-        # get the user
-        user = User.objects.get(id=id)
-        # get all the images for the user
-        image = Image.objects.filter(user_id=id)
-        # get the profile of the user
-        profile = Profile.objects.filter(user_id=id).first()
-        return render(request, 'user-profile.html', {'post': image, 'profile': profile, 'user': user})
-    else:
-        return redirect('/') 
+def user_profile(request, user_id):
+    prof_user = Profile.objects.filter(user_id=user_id).first()
+    images = Image.objects.filter(user_id = user_id)
+
+    return render(request, 'user-prof.html', {'images':images, 'prof_user': prof_user})
 
 def like_image(request):
     user = request.user

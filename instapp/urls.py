@@ -17,7 +17,7 @@ urlpatterns = [
     path('like/', views.like_image, name='like-image'),
     path('search/', views.search_post, name='search.post'),
     # path('image/<int:id>/', views.single_pic, name='single.pic'),
-    path('user/<int:id>/', views.user_profile, name='user.profile'),
+    path('user/<user_id>/', views.user_profile, name='user.profile'),
     path('comments/<image_id>', views.comments,name='comments'),
 ]
 
