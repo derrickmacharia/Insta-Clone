@@ -76,3 +76,9 @@ nav{
     align-items: center;
     justify-content: center;
 }
+
+.comments {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

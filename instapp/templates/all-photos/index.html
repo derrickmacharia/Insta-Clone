@@ -22,7 +22,7 @@
                 <h2>...</h2>
             </div>
                 <div class="bg-white rounded shadow-sm">
-                    <div class = "" data-toggle ="modal" data-target="#showPicModal">
+                  <div class = "" data-toggle ="modal" data-target="#showPicModal{{pic.id}}">
                       <img src="{{ pic.image.url }}" alt=""class="img-fluid card-img-top">
                   </div>
                   <div class="p-4">
@@ -74,6 +74,34 @@
                   <input type="hidden" name="next" value="{{next}}">
               </div>
              </div>
+
+             <div class="modal fade" id="showPicModal{{pic.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered mode" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalPictureTitle">Post Image</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+      
+                  </div>
+                  <div class="modal-footer">
+                      
+                    {% for comment in pic.saved_comments %}
+
+                    <div class="comments">
+                      <p> <span><strong>{{comment.user}}</strong></span>: {{comment.comment}}</p>
+                    </div>
+
+                    {% endfor %}
+                  </div>
+              </div>
+                
+          </div>
+          </div>
+
              {% endfor%}
           </div>
           </div>
