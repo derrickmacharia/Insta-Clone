@@ -48,7 +48,6 @@ class Image(models.Model):
         return images
 
     @classmethod
-  # search images using image name
     def search_image_name(cls, search_term):
         images = cls.objects.filter(
         title__icontains=search_term)
@@ -59,7 +58,7 @@ class Image(models.Model):
 
     def _str_(self):
         return self.title
-    #  get a single image using id
+
     @classmethod
     def get_single_image(cls, id):
         image = cls.objects.get(id=id)
@@ -105,7 +104,7 @@ class Likes(models.Model):
 
     def _str_(self):
         return self.value
-        
+
 class Follow(models.Model):
     user = models.OneToOneField(User, related_name='following',on_delete = models.CASCADE)
     follower = models.ForeignKey(User, related_name='followers',on_delete = models.CASCADE)
