@@ -16,7 +16,7 @@ from .forms import PostImageForm,CommentForm
 def index(request):
     image = Image.objects.all().order_by('-id')
     user = Profile.objects.all()
-    form = PostImageForm()
+    
     if request.method == 'POST':  
         form = CommentForm(request.POST, request.FILES)
         if form.is_valid():
@@ -27,11 +27,8 @@ def index(request):
     
     else:
         form = CommentForm()
-        forms = PostImageForm()
 
-    return render(request, 'all-photos/index.html',{'image': image, 'form': form, 'forms': forms, 'user': user })
-
-
+    return render(request, 'all-photos/index.html',{'image': image, 'form': form, 'user': user})
 
 
 
@@ -41,9 +38,9 @@ def profile(request):
     image = Image.objects.filter(user_id=current_user.id)
     profile = Profile.objects.filter(user_id=current_user.id).first()
 
-    forms = PostImageForm()
+    form = PostImageForm()
 
-    context = {"image": image, "profile": profile, "forms": forms}
+    context = {"image": image, "profile": profile, "form": form}
     if request.method == 'POST':
         form = PostImageForm (request.POST , request.FILES)
         if form.is_valid():
