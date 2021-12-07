@@ -6,9 +6,11 @@
       <div class="container-full">
         <div class="px-lg-5 content">
           <!-- display default password and username  -->
+
           <div class="row imgs">
             {% for pic in image %}
               <!-- Gallery Photo item start -->
+
               <div class="col-lg-12 col-md-12 mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center justify-content-center">
@@ -109,12 +111,18 @@
 
              {% endfor%}
           </div>
-          </div>
-          {% for users in user %}
-          <img src="{{ users.profile_photo.url }}" alt=""class="img-fluid card-img-top">
-            {{users.user.username}}
+          <div class="profiles">
 
-          {% endfor%}
+            {% for users in user %}
+            <div class="profimage">
+              <img src="{{ users.profile_photo.url }}" alt=""class="imgprof">
+            </div>
+              <a href="">{{users.user.username}}</a>
+  
+            {% endfor%}
+          </div>
+          </div>
+
       </div>
   </div>
   

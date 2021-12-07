@@ -2,13 +2,24 @@
 
  {% block content %}
 
-   {{prof_user.user.username}}
+   <div class="container-full">
+        <div class="row">
+            {{prof_user.user.username}}
 
 
-    {% for image in images %}
+            <div class="container">
+                <h3>Posts</h3>
+                {% for image in images %}
 
-    <img src="{{ image.image.url }}" alt=""class="img-fluid card-img-top">
+                    <div class="row mb-4">
+                        <div class="col-md-4">
+                            <img src="{{ image.image.url }}" alt=""class="responsive">
+                        </div>
+                        
+                    </div>
+                {% endfor%}
+            </div>
+        </div>
 
-    {% endfor%}
-
+    </div>
  {% endblock %}

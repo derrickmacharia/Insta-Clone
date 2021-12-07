@@ -1,4 +1,4 @@
-<!-- # Insta-Clone!!
+# Insta-Clone!!
 
 ### 7th Dec. 2021
 
@@ -113,4 +113,4 @@ MIT License
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 
-Copyright (c) {2021} **Derrick Macharia** -->
+Copyright (c) {2021} **Derrick Macharia**

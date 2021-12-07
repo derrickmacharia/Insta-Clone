@@ -82,3 +82,13 @@ nav{
     align-items: center;
     justify-content: center;
 }
+
+.imgprof {
+    border-radius: 50%;
+    height: 70px;
+    width: 50px;
+}
+.responsive{
+    height: auto;
+    width: 100%;
+}
