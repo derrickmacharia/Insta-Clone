@@ -105,6 +105,7 @@ class Likes(models.Model):
 
     def _str_(self):
         return self.value
+        
 class Follow(models.Model):
     user = models.OneToOneField(User, related_name='following',on_delete = models.CASCADE)
     follower = models.ForeignKey(User, related_name='followers',on_delete = models.CASCADE)
