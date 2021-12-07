@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-# from django.conf.urls import include,url
 from django.contrib.auth import views 
 from django_registration.backends.one_step.views import RegistrationView
 
@@ -29,9 +28,4 @@ urlpatterns = [
     path('logout/', views.logout_then_login, name='logout'),
 ]
 
-# urlpatterns = [
-#     url(r'^admin/', admin.site.urls),
-#     url(r'',include('instapp.urls')),
-#     url(r'^accounts/', include('registration.backends.simple.urls')),
-#     url(r'^logout/$', views.logout, {"next_page": '/'}), 
-# ]
+
