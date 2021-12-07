@@ -39,7 +39,7 @@ This is a Python Application where a user(s) can view  a photo, search through c
 
 ##### Clone the repository: 
  ```bash
- git@github.com:derrickmacharia/The-Collector.git
+ git@github.com:derrickmacharia/Insta-Clone.git
 ```
 ##### Navigate into the folder and install requirements 
  ```bash
