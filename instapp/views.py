@@ -7,6 +7,7 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 from .forms import PostImageForm,CommentForm
 
 # Create your views here.
@@ -48,7 +49,20 @@ def search_post(request):
     else:
         message = 'Not found'
         return render(request, 'all-photos/search.html', {'danger': message})
-        
+
+@login_required(login_url='/accounts/login/')
+def user_profile(request, id):
+    # check if user exists
+    if User.objects.filter(id=id).exists():
+        # get the user
+        user = User.objects.get(id=id)
+        # get all the images for the user
+        image = Image.objects.filter(user_id=id)
+        # get the profile of the user
+        profile = Profile.objects.filter(user_id=id).first()
+        return render(request, 'user-profile.html', {'post': image, 'profile': profile, 'user': user})
+    else:
+        return redirect('/') 
 
 def like_image(request):
     user = request.user
