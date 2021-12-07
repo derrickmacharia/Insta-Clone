@@ -2,7 +2,7 @@ from django import forms
 from django.http.response import Http404
 from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required
-from instapp.models import Image,Profile,Likes
+from instapp.models import Image,Profile,Likes,Comment
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -15,8 +15,18 @@ from .forms import PostImageForm,CommentForm
 @login_required(login_url='/accounts/login/')
 def index(request):
     image = Image.objects.all().order_by('-id')
+    if request.method == 'POST':  
+        form = CommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            com = form.save(commit=False)
+            com.user = request.user
+            com.save()
+            return redirect('index')
+    
+    else:
+        form = CommentForm()
 
-    return render(request, 'all-photos/index.html',{'image': image})
+    return render(request, 'all-photos/index.html',{'image': image, 'form': form})
 
 
 
@@ -93,23 +103,17 @@ def single_pic(request,id):
 
     return render(request, 'pic.html', {'image': image,'images': related_images, 'title': imagetitle})
 
-# def post_detail(request, slug):
-#     template_name = 'post_detail.html'
-#     post = get_object_or_404(Image, slug=slug)
-#     comments = post.comments.filter(active=True)
-#     new_comment = None
-#     # Comment posted
-#     if request.method == 'POST':
-#         comment_form = CommentForm(data=request.POST)
-#         if comment_form.is_valid():
 
-#             # Create Comment object but don't save to database yet
-#             new_comment = comment_form.save(commit=False)
-#             # Assign the current post to the comment
-#             new_comment.post = post
-#             # Save the comment to the database
-#             new_comment.save()
-#     else:
-#         comment_form = CommentForm()
+@login_required
+def comments(request,image_id):
+  form = CommentForm()
+  image = Image.objects.filter(pk = image_id).first()
+  if request.method == 'POST':
+    form = CommentForm(request.POST)
+    if form.is_valid():
+      comment = form.save(commit = False)
+      comment.user = request.user
+      comment.image = image
+      comment.save() 
+  return redirect('index')
 
-#     return render(request, template_name, {'post': post,'comments': comments,'new_comment': new_comment,'comment_form': comment_form})

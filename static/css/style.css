@@ -70,3 +70,9 @@ nav{
 .profile .card-img-top {
     border-radius: 50% !important;
 }
+
+.com {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

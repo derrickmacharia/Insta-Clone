@@ -16,5 +16,5 @@ class PostImageForm(forms.ModelForm):
 
 class CommentForm(forms.ModelForm):
     class Meta:
-        model = Comment
-        fields = ('comment',)
+        model=Comment        
+        fields=['comment']
