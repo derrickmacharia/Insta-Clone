@@ -25,9 +25,9 @@ DEBUG = os.environ.get('DEBUG', True)
 
 #adding config
 cloudinary.config( 
-  cloud_name = config('CLOUD_NAME'), 
-  api_key =  config('CLOUD_KEY'), 
-  api_secret = config('CLOUD_SECRET')
+  cloud_name = 'the-collector', 
+  api_key =  '385692492331583', 
+  api_secret = 'wpPzGYYSWBJ_4NCwwSEC0YUMSO8'
 )
 
 DATABASES = {
@@ -40,9 +40,9 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('CLOUD_NAME'),
-    'API_KEY': config('CLOUD_KEY'),
-    'API_SECRET': config('CLOUD_SECRET')
+    'CLOUD_NAME': 'the-collector',
+    'API_KEY': '385692492331583',
+    'API_SECRET': 'wpPzGYYSWBJ_4NCwwSEC0YUMSO8'
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
